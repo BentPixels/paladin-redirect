@@ -2,6 +2,8 @@ require "rack"
 
 class App
   def self.call(env)
+    return ['200', {}, [env.inspect]]
+
     if env["HOST"].include?("bentpixels")
       host = env["HOST"].sub('bentpixels', 'paladinsoftware')
       url = "#{host}/#{env["REQUEST_URI"]}"
